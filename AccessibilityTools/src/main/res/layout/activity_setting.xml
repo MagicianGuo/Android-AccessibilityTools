@@ -139,5 +139,34 @@
                     android:text="@string/settings_view_area_type_contain_text" />
             </RadioGroup>
         </RelativeLayout>
+        <RelativeLayout
+            style="@style/SettingItem">
+            <TextView
+                android:id="@+id/tv_view_area_txt_size"
+                style="@style/SettingTitle"
+                android:layout_centerVertical="true"
+                android:text="@string/settings_view_area_text_size" />
+            <SeekBar
+                android:id="@+id/sb_view_area_txt_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:max="100"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            style="@style/SettingItem">
+            <TextView
+                android:id="@+id/tv_view_area_txt_show_pkg"
+                style="@style/SettingTitle"
+                android:layout_centerVertical="true"
+                android:text="@string/settings_view_area_text_show_pkg" />
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/sw_view_area_txt_show_pkg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

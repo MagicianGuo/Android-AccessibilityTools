@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.FrameLayout"
+    tools:layout_width="200dp"
+    tools:layout_height="200dp">
+    <View
+        android:id="@+id/view_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="#80FF0000" />
+    <TextView
+        android:id="@+id/tv_area_info"
+        style="@style/TxtViewAreaItem"
+        android:singleLine="false"
+        tools:text="settings_view_area_type_contain_text_settings_view_area_type_contain_text" />
+</merge>

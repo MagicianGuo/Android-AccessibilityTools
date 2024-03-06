@@ -19,6 +19,8 @@ public class SPUtils {
     public static final String KEY_VIEW_AREA_GREEN = "KEY_VIEW_AREA_GREEN";
     public static final String KEY_VIEW_AREA_BLUE = "KEY_VIEW_AREA_BLUE";
     public static final String KEY_VIEW_AREA_TYPE = "KEY_VIEW_AREA_TYPE";
+    public static final String KEY_VIEW_AREA_TXT_SIZE = "KEY_VIEW_AREA_TXT_SIZE";
+    public static final String KEY_VIEW_AREA_TXT_SHOW_PKG = "KEY_VIEW_AREA_TXT_SHOW_PKG";
 
     public static void setClickX(int value) {
         SharedPreferences.Editor edit = SP.edit();
@@ -108,6 +110,26 @@ public class SPUtils {
 
     public static int getViewAreaType() {
         return SP.getInt(KEY_VIEW_AREA_TYPE, ViewAreaType.IMPORTANT);
+    }
+
+    public static void setViewAreaTxtSize(int value) {
+        SharedPreferences.Editor edit = SP.edit();
+        edit.putInt(KEY_VIEW_AREA_TXT_SIZE, value);
+        edit.apply();
+    }
+
+    public static int getViewAreaTxtSize() {
+        return SP.getInt(KEY_VIEW_AREA_TXT_SIZE, 20);
+    }
+
+    public static void setViewAreaTxtShowPkg(boolean show) {
+        SharedPreferences.Editor edit = SP.edit();
+        edit.putBoolean(KEY_VIEW_AREA_TXT_SHOW_PKG, show);
+        edit.apply();
+    }
+
+    public static boolean getViewAreaTxtShowPkg() {
+        return SP.getBoolean(KEY_VIEW_AREA_TXT_SHOW_PKG, false);
     }
 
 }

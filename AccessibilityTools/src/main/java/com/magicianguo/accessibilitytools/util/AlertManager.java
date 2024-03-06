@@ -34,6 +34,7 @@ public class AlertManager {
     private static final WindowManager.LayoutParams VIEW_EXPLORER_VIEW_PARAMS = newAlertParams();
     private static boolean isViewAreaViewShowing = false;
     public static int viewAreaType = SPUtils.getViewAreaType();
+    public static boolean viewAreaTxtShowPkg = SPUtils.getViewAreaTxtShowPkg();
     private static final FrameLayout VIEW_AREA_VIEW = new FrameLayout(App.get());
     private static final WindowManager.LayoutParams VIEW_AREA_VIEW_PARAMS = newAlertParams(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
     public static boolean isTurnPageViewShowing = false;
@@ -155,6 +156,16 @@ public class AlertManager {
             } else {
                 params.leftMargin = rect.left - STATUS_BAR_HEIGHT;
                 params.topMargin = rect.top;
+            }
+            final String txt = nodeInfo.getViewIdResourceName();
+            if (viewAreaTxtShowPkg) {
+                view.setText(txt);
+            } else {
+                if (txt != null && txt.contains(":")) {
+                    view.setText(txt.split(":")[1]);
+                } else {
+                    view.setText(txt);
+                }
             }
             VIEW_AREA_VIEW.addView(view, params);
         }

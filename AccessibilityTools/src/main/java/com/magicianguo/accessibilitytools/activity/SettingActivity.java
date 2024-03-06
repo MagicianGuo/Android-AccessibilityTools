@@ -3,6 +3,7 @@ package com.magicianguo.accessibilitytools.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 
@@ -18,6 +19,7 @@ import com.magicianguo.accessibilitytools.view.ViewAreaItemView;
 
 public class SettingActivity extends AppCompatActivity {
     private ActivitySettingBinding binding;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +120,38 @@ public class SettingActivity extends AppCompatActivity {
                 SPUtils.setViewAreaType(type);
             }
         });
+        updateViewAreaTxtSizeState(false);
+        binding.sbViewAreaTxtSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                ViewAreaItemView.textSize = progress;
+                updateViewAreaTxtSizeState(true);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                SPUtils.setViewAreaTxtSize(ViewAreaItemView.textSize);
+            }
+        });
+        binding.swViewAreaTxtShowPkg.setChecked(AlertManager.viewAreaTxtShowPkg);
+        binding.swViewAreaTxtShowPkg.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                AlertManager.viewAreaTxtShowPkg = isChecked;
+                SPUtils.setViewAreaTxtShowPkg(isChecked);
+            }
+        });
+    }
+
+    private void updateViewAreaTxtSizeState(boolean fromUser) {
+        binding.tvViewAreaTxtSize.setText(getString(R.string.settings_view_area_text_size, ViewAreaItemView.textSize));
+        if (!fromUser) {
+            binding.sbViewAreaTxtSize.setProgress(ViewAreaItemView.textSize);
+        }
     }
 
     private int getCheckedViewAreaTypeId() {

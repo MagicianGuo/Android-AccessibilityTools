@@ -56,4 +56,6 @@
     <string name="settings_view_area_type_all">全部</string>
     <string name="settings_view_area_type_important">important</string>
     <string name="settings_view_area_type_contain_text">含文字的</string>
+    <string name="settings_view_area_text_size">View区域文字\n大小：%dpx</string>
+    <string name="settings_view_area_text_show_pkg">View区域文字显示包名</string>
 </resources>
