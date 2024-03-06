@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">辅助功能工具</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
     <string name="accessibility_enabled">辅助功能已开启！</string>
     <string name="accessibility_disabled">辅助功能未开启！\n请点击下方按钮开启！</string>
     <string name="go_accessibility_page">前往辅助功能页</string>
@@ -58,4 +60,6 @@
     <string name="settings_view_area_type_contain_text">含文字的</string>
     <string name="settings_view_area_text_size">View区域文字\n大小：%dpx</string>
     <string name="settings_view_area_text_show_pkg">View区域文字显示包名</string>
+    <string name="settings_view_area_write_log_to_file_when_show">显示View区域时输出日志到文件</string>
+    <string name="settings_toast_view_area_write_log_to_xxx_path">日志会输出到%s</string>
 </resources>

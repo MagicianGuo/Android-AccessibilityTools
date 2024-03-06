@@ -168,5 +168,19 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true" />
         </RelativeLayout>
+        <RelativeLayout
+            style="@style/SettingItem">
+            <TextView
+                android:id="@+id/tv_view_area_write_log"
+                style="@style/SettingTitle"
+                android:layout_centerVertical="true"
+                android:text="@string/settings_view_area_write_log_to_file_when_show" />
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/sw_view_area_write_log"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

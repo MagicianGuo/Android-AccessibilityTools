@@ -24,6 +24,8 @@ import com.magicianguo.accessibilitytools.view.TurnPageView;
 import com.magicianguo.accessibilitytools.view.ViewAreaItemView;
 import com.magicianguo.accessibilitytools.view.ViewExplorerView;
 
+import java.util.Date;
+
 @SuppressLint("ClickableViewAccessibility,StaticFieldLeak")
 public class AlertManager {
     private static final String TAG = "AlertManager";
@@ -35,6 +37,7 @@ public class AlertManager {
     private static boolean isViewAreaViewShowing = false;
     public static int viewAreaType = SPUtils.getViewAreaType();
     public static boolean viewAreaTxtShowPkg = SPUtils.getViewAreaTxtShowPkg();
+    public static boolean viewAreaWriteToLog = SPUtils.getViewAreaWriteToLog();
     private static final FrameLayout VIEW_AREA_VIEW = new FrameLayout(App.get());
     private static final WindowManager.LayoutParams VIEW_AREA_VIEW_PARAMS = newAlertParams(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
     public static boolean isTurnPageViewShowing = false;
@@ -168,6 +171,9 @@ public class AlertManager {
                 }
             }
             VIEW_AREA_VIEW.addView(view, params);
+            if (viewAreaWriteToLog) {
+                FileManager.writeViewAreaLog(new Date() + " - " + nodeInfo);
+            }
         }
         int childCount = nodeInfo.getChildCount();
         for (int i = 0; i < childCount; i++) {

@@ -10,10 +10,12 @@ import android.widget.SeekBar;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.magicianguo.accessibilitytools.R;
 import com.magicianguo.accessibilitytools.constant.ViewAreaType;
 import com.magicianguo.accessibilitytools.databinding.ActivitySettingBinding;
 import com.magicianguo.accessibilitytools.util.AlertManager;
+import com.magicianguo.accessibilitytools.util.FileManager;
 import com.magicianguo.accessibilitytools.util.SPUtils;
 import com.magicianguo.accessibilitytools.view.ViewAreaItemView;
 
@@ -143,6 +145,20 @@ public class SettingActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 AlertManager.viewAreaTxtShowPkg = isChecked;
                 SPUtils.setViewAreaTxtShowPkg(isChecked);
+            }
+        });
+        binding.swViewAreaWriteLog.setChecked(SPUtils.getViewAreaWriteToLog());
+        binding.swViewAreaWriteLog.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                AlertManager.viewAreaWriteToLog = isChecked;
+                SPUtils.setViewAreaWriteToLog(isChecked);
+                if (isChecked) {
+                    Snackbar.make(binding.getRoot(), getString(R.string.settings_toast_view_area_write_log_to_xxx_path, FileManager.VIEW_AREA_LOG_PATH), Snackbar.LENGTH_LONG)
+                            .setAction(R.string.confirm, v -> {})
+                            .setTextMaxLines(4)
+                            .show();
+                }
             }
         });
     }
