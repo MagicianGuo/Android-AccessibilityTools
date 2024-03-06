@@ -171,7 +171,7 @@ public class AlertManager {
         }
         int childCount = nodeInfo.getChildCount();
         for (int i = 0; i < childCount; i++) {
-            recursionShowViewArea(nodeInfo.getChild(i), depthLevel + "." + i);
+            recursionShowViewArea(nodeInfo.getChild(i), depthLevel + "." + (i + 1));
         }
     }
 
