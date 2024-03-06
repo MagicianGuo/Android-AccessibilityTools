@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         binding.btnGoAccessibility.setOnClickListener(v -> {
             PermissionUtils.goAccessibilityPage(this);
+            ToastUtils.shortCall(R.string.toast_please_select_my_app);
         });
         binding.btnGoAppDetail.setOnClickListener(v -> {
             PermissionUtils.goAppDetailPage(this);

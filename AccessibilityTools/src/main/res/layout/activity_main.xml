@@ -10,6 +10,7 @@
         android:id="@+id/tv_accessibility_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:textSize="20dp"
         tools:text="辅助功能未开启！" />
 

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">辅助功能工具</string>
     <string name="accessibility_enabled">辅助功能已开启！</string>
-    <string name="accessibility_disabled">辅助功能未开启！</string>
+    <string name="accessibility_disabled">辅助功能未开启！\n请点击下方按钮开启！</string>
     <string name="go_accessibility_page">前往辅助功能页</string>
     <string name="go_app_detail_page">前往应用详情页</string>
     <string name="turn_page_tools_off">翻页工具：关</string>
