@@ -18,6 +18,7 @@ import com.magicianguo.accessibilitytools.R;
 import com.magicianguo.accessibilitytools.constant.TurnPageTime;
 import com.magicianguo.accessibilitytools.constant.TurnPageType;
 import com.magicianguo.accessibilitytools.util.AccessibilityServiceManager;
+import com.magicianguo.accessibilitytools.util.AlertManager;
 import com.magicianguo.accessibilitytools.util.DimenUtils;
 import com.magicianguo.accessibilitytools.util.TimeUtils;
 import com.magicianguo.accessibilitytools.util.VibratorUtils;
@@ -94,6 +95,9 @@ public class TurnPageView extends LinearLayout {
                 mBtnChangeSize.setText(R.string.btn_txt_make_alert_large);
             }
             v.setSelected(!selected);
+        });
+        findViewById(R.id.btn_alert_close).setOnClickListener(v -> {
+            AlertManager.hideTurnPageView();
         });
 
         findViewById(R.id.btn_left).setOnClickListener(v -> {

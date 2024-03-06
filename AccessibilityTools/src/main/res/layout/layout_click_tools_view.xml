@@ -11,7 +11,7 @@
         android:id="@+id/tv_title"
         style="@style/TxtTitle"
         android:text="@string/click_tools"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,10 +20,19 @@
         android:id="@+id/btn_change_size"
         style="@style/AlertButton"
         android:text="@string/btn_txt_make_alert_small"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_title"
         app:layout_constraintStart_toEndOf="@+id/tv_title"
         app:layout_constraintTop_toTopOf="@+id/tv_title" />
+
+    <TextView
+        android:id="@+id/btn_close_alert"
+        style="@style/AlertButton"
+        android:text="@string/btn_txt_make_alert_close"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_change_size"
+        app:layout_constraintStart_toEndOf="@+id/btn_change_size"
+        app:layout_constraintTop_toTopOf="@+id/btn_change_size" />
 
     <TextView
         android:id="@+id/tv_set_x"
@@ -114,7 +123,7 @@
     <TextView
         android:id="@+id/btn_start_click"
         style="@style/AlertButton"
-        android:layout_width="55dp"
+        android:layout_width="60dp"
         android:layout_marginTop="5dp"
         android:text="@string/btn_txt_start_click"
         app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +132,7 @@
     <TextView
         android:id="@+id/btn_stop_click"
         style="@style/AlertButton"
-        android:layout_width="55dp"
+        android:layout_width="60dp"
         android:layout_marginStart="5dp"
         android:text="@string/btn_txt_stop_click"
         app:layout_constraintBottom_toBottomOf="@+id/btn_start_click"

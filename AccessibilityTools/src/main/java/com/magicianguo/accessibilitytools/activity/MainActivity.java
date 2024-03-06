@@ -13,6 +13,22 @@ import com.magicianguo.accessibilitytools.util.ToastUtils;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+    private final AlertManager.AlertStateListener mAlertStateListener = new AlertManager.AlertStateListener() {
+        @Override
+        public void onViewExplorer(boolean showing) {
+            updateBtnViewExplorerState(showing);
+        }
+
+        @Override
+        public void onTurnPage(boolean showing) {
+            updateBtnTurnPageState(showing);
+        }
+
+        @Override
+        public void onClickTools(boolean showing) {
+            updateBtnClickToolsState(showing);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         PermissionUtils.checkNotificationPermission(this);
         initView();
+        AlertManager.setAlertStateListener(mAlertStateListener);
     }
 
     @Override
@@ -33,10 +50,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        AlertManager.setAlertStateListener(null);
         binding = null;
     }
 
     private void initView() {
+        updateBtnViewExplorerState(AlertManager.isViewExplorerViewShowing);
+        updateBtnTurnPageState(AlertManager.isTurnPageViewShowing);
+        updateBtnClickToolsState(AlertManager.isClickToolsViewShowing);
         binding.btnGoAccessibility.setOnClickListener(v -> {
             PermissionUtils.goAccessibilityPage(this);
             ToastUtils.shortCall(R.string.toast_please_select_my_app);
@@ -44,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         binding.btnGoAppDetail.setOnClickListener(v -> {
             PermissionUtils.goAppDetailPage(this);
         });
-        updateBtnViewExplorerState(AlertManager.isViewExplorerViewShowing);
         binding.btnViewExplorer.setOnClickListener(v -> {
             if (checkAlertPermission()) {
                 boolean selected = v.isSelected();
@@ -56,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 updateBtnViewExplorerState(!selected);
             }
         });
-        updateBtnTurnPageState(AlertManager.isTurnPageViewShowing);
         binding.btnTurnPage.setOnClickListener(v -> {
             if (checkAlertPermission()) {
                 boolean selected = v.isSelected();
@@ -68,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
                 updateBtnTurnPageState(!selected);
             }
         });
-        updateBtnClickToolsState(AlertManager.isClickToolsViewShowing);
         binding.btnClickTools.setOnClickListener(v -> {
             if (checkAlertPermission()) {
                 boolean selected = v.isSelected();

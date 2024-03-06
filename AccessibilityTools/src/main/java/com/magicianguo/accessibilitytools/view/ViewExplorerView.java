@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.magicianguo.accessibilitytools.R;
 import com.magicianguo.accessibilitytools.util.AccessibilityServiceManager;
+import com.magicianguo.accessibilitytools.util.AlertManager;
 import com.magicianguo.accessibilitytools.util.DimenUtils;
 
 public class ViewExplorerView extends LinearLayout {
@@ -41,6 +42,9 @@ public class ViewExplorerView extends LinearLayout {
         });
         findViewById(R.id.btn_hide_view_area).setOnClickListener(v -> {
             AccessibilityServiceManager.hideViewArea();
+        });
+        findViewById(R.id.btn_close_alert).setOnClickListener(v -> {
+            AlertManager.hideViewExplorerView();
         });
     }
 }

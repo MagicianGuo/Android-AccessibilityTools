@@ -20,7 +20,7 @@
         <item name="android:background">@drawable/bg_btn_alert_common</item>
     </style>
     <style name="AlertEditText" parent="WrapContent">
-        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_width">60dp</item>
         <item name="android:gravity">center</item>
         <item name="android:singleLine">true</item>
         <item name="android:textSize">8dp</item>

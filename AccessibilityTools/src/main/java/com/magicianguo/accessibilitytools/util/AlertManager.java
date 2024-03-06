@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.FrameLayout;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.magicianguo.accessibilitytools.App;
@@ -108,6 +109,9 @@ public class AlertManager {
             return;
         }
         WINDOW_MANAGER.addView(VIEW_EXPLORER_VIEW, VIEW_EXPLORER_VIEW_PARAMS);
+        if (alertStateListener != null) {
+            alertStateListener.onViewExplorer(true);
+        }
         isViewExplorerViewShowing = true;
     }
 
@@ -116,6 +120,9 @@ public class AlertManager {
             return;
         }
         WINDOW_MANAGER.removeView(VIEW_EXPLORER_VIEW);
+        if (alertStateListener != null) {
+            alertStateListener.onViewExplorer(false);
+        }
         isViewExplorerViewShowing = false;
     }
 
@@ -201,6 +208,9 @@ public class AlertManager {
             return;
         }
         WINDOW_MANAGER.addView(TURN_PAGE_VIEW, TURN_PAGE_VIEW_PARAMS);
+        if (alertStateListener != null) {
+            alertStateListener.onTurnPage(true);
+        }
         isTurnPageViewShowing = true;
     }
 
@@ -209,6 +219,9 @@ public class AlertManager {
             return;
         }
         WINDOW_MANAGER.removeView(TURN_PAGE_VIEW);
+        if (alertStateListener != null) {
+            alertStateListener.onTurnPage(false);
+        }
         isTurnPageViewShowing = false;
     }
 
@@ -217,6 +230,9 @@ public class AlertManager {
             return;
         }
         WINDOW_MANAGER.addView(CLICK_TOOLS_VIEW, CLICK_TOOLS_VIEW_PARAMS);
+        if (alertStateListener != null) {
+            alertStateListener.onClickTools(true);
+        }
         isClickToolsViewShowing = true;
     }
 
@@ -225,6 +241,9 @@ public class AlertManager {
             return;
         }
         WINDOW_MANAGER.removeView(CLICK_TOOLS_VIEW);
+        if (alertStateListener != null) {
+            alertStateListener.onClickTools(false);
+        }
         isClickToolsViewShowing = false;
     }
 
@@ -253,5 +272,20 @@ public class AlertManager {
         params.gravity = Gravity.START | Gravity.TOP;
         params.format = PixelFormat.RGBA_8888;
         return params;
+    }
+
+    @Nullable
+    private static AlertStateListener alertStateListener;
+
+    public static void setAlertStateListener(@Nullable AlertStateListener listener) {
+        alertStateListener = listener;
+    }
+
+    public interface AlertStateListener {
+        void onViewExplorer(boolean showing);
+
+        void onTurnPage(boolean showing);
+
+        void onClickTools(boolean showing);
     }
 }

@@ -94,6 +94,9 @@ public class ClickToolsView extends ConstraintLayout {
                 mBtnOperation.setText(R.string.btn_txt_save_config);
             }
         });
+        findViewById(R.id.btn_close_alert).setOnClickListener(v -> {
+            AlertManager.hideClickToolsView();
+        });
         findViewById(R.id.btn_start_click).setOnClickListener(v -> {
             AccessibilityServiceManager.performClick(
                     SPUtils.getClickX(), SPUtils.getClickY(), SPUtils.getClickInterval(), SPUtils.getClickCount()

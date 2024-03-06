@@ -22,10 +22,12 @@
 
     <string name="btn_txt_show_view_area">显示View区域</string>
     <string name="btn_txt_hide_view_area">隐藏View区域</string>
+    <string name="btn_txt_close_view_explorer_alert">关闭弹窗</string>
     <string name="toast_view_explorer_unsupported">Android7.0以下不支持View区域查看功能！</string>
 
     <string name="btn_txt_make_alert_small">缩小\n弹窗</string>
     <string name="btn_txt_make_alert_large">放大\n弹窗</string>
+    <string name="btn_txt_make_alert_close">关闭\n弹窗</string>
     <string name="btn_txt_turn_left_page">向左\n翻页</string>
     <string name="btn_txt_turn_up_page">向上\n翻页</string>
     <string name="btn_txt_turn_right_page">向右\n翻页</string>
