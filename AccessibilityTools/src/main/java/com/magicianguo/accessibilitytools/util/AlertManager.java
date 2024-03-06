@@ -37,6 +37,7 @@ public class AlertManager {
     private static boolean isViewAreaViewShowing = false;
     public static int viewAreaType = SPUtils.getViewAreaType();
     public static boolean viewAreaTxtShowPkg = SPUtils.getViewAreaTxtShowPkg();
+    public static boolean viewAreaTxtSingleLine = SPUtils.getViewAreaTxtSingleLine();
     public static boolean viewAreaWriteToLog = SPUtils.getViewAreaWriteToLog();
     private static final FrameLayout VIEW_AREA_VIEW = new FrameLayout(App.get());
     private static final WindowManager.LayoutParams VIEW_AREA_VIEW_PARAMS = newAlertParams(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
@@ -152,7 +153,13 @@ public class AlertManager {
             Rect rect = new Rect();
             nodeInfo.getBoundsInScreen(rect);
             ViewAreaItemView view = new ViewAreaItemView(App.get());
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(rect.right - rect.left, rect.bottom - rect.top);
+            FrameLayout.LayoutParams params;
+            if (viewAreaTxtSingleLine) {
+                params = new FrameLayout.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                view.setAreaSize(rect.right - rect.left, rect.bottom - rect.top);
+            } else {
+                params = new FrameLayout.LayoutParams(rect.right - rect.left, rect.bottom - rect.top);
+            }
             if (mIsPortrait) {
                 params.leftMargin = rect.left;
                 params.topMargin = rect.top - STATUS_BAR_HEIGHT;

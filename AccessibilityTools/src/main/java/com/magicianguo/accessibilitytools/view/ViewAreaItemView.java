@@ -52,4 +52,11 @@ public class ViewAreaItemView extends FrameLayout {
     public void setText(String text) {
         mTvAreaInfo.setText(text);
     }
+
+    public void setAreaSize(int width, int height) {
+        FrameLayout.LayoutParams params = (LayoutParams) mAreaView.getLayoutParams();
+        params.width = width;
+        params.height = height;
+        mAreaView.setLayoutParams(params);
+    }
 }

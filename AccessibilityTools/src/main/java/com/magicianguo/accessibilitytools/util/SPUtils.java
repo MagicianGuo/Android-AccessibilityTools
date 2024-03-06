@@ -21,6 +21,7 @@ public class SPUtils {
     public static final String KEY_VIEW_AREA_TYPE = "KEY_VIEW_AREA_TYPE";
     public static final String KEY_VIEW_AREA_TXT_SIZE = "KEY_VIEW_AREA_TXT_SIZE";
     public static final String KEY_VIEW_AREA_TXT_SHOW_PKG = "KEY_VIEW_AREA_TXT_SHOW_PKG";
+    public static final String KEY_VIEW_AREA_TXT_SINGLE_LINE = "KEY_VIEW_AREA_TXT_SINGLE_LINE";
     public static final String KEY_VIEW_AREA_WRITE_TO_LOG = "KEY_VIEW_AREA_WRITE_TO_LOG";
 
     public static void setClickX(int value) {
@@ -131,6 +132,16 @@ public class SPUtils {
 
     public static boolean getViewAreaTxtShowPkg() {
         return SP.getBoolean(KEY_VIEW_AREA_TXT_SHOW_PKG, false);
+    }
+
+    public static void setViewAreaTxtSingleLine(boolean show) {
+        SharedPreferences.Editor edit = SP.edit();
+        edit.putBoolean(KEY_VIEW_AREA_TXT_SINGLE_LINE, show);
+        edit.apply();
+    }
+
+    public static boolean getViewAreaTxtSingleLine() {
+        return SP.getBoolean(KEY_VIEW_AREA_TXT_SINGLE_LINE, false);
     }
 
     public static void setViewAreaWriteToLog(boolean show) {

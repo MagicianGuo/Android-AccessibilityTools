@@ -12,6 +12,5 @@
     <TextView
         android:id="@+id/tv_area_info"
         style="@style/TxtViewAreaItem"
-        android:singleLine="false"
         tools:text="settings_view_area_type_contain_text_settings_view_area_type_contain_text" />
 </merge>

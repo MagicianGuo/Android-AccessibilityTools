@@ -147,6 +147,14 @@ public class SettingActivity extends AppCompatActivity {
                 SPUtils.setViewAreaTxtShowPkg(isChecked);
             }
         });
+        binding.swViewAreaTxtSingleLine.setChecked(AlertManager.viewAreaTxtSingleLine);
+        binding.swViewAreaTxtSingleLine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                AlertManager.viewAreaTxtSingleLine = isChecked;
+                SPUtils.setViewAreaTxtSingleLine(isChecked);
+            }
+        });
         binding.swViewAreaWriteLog.setChecked(SPUtils.getViewAreaWriteToLog());
         binding.swViewAreaWriteLog.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
