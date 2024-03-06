@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.magicianguo.accessibilitytools.App;
+import com.magicianguo.accessibilitytools.constant.ViewAreaType;
 
 public class SPUtils {
     private static final String TAG = "SPUtils";
@@ -13,6 +14,11 @@ public class SPUtils {
     public static final String KEY_CLICK_Y = "KEY_CLICK_Y";
     public static final String KEY_CLICK_INTERVAL = "KEY_CLICK_INTERVAL";
     public static final String KEY_CLICK_COUNT = "KEY_CLICK_COUNT";
+    public static final String KEY_VIEW_AREA_ALPHA = "KEY_VIEW_AREA_ALPHA";
+    public static final String KEY_VIEW_AREA_RED = "KEY_VIEW_AREA_RED";
+    public static final String KEY_VIEW_AREA_GREEN = "KEY_VIEW_AREA_GREEN";
+    public static final String KEY_VIEW_AREA_BLUE = "KEY_VIEW_AREA_BLUE";
+    public static final String KEY_VIEW_AREA_TYPE = "KEY_VIEW_AREA_TYPE";
 
     public static void setClickX(int value) {
         SharedPreferences.Editor edit = SP.edit();
@@ -53,4 +59,55 @@ public class SPUtils {
     public static int getClickCount() {
         return SP.getInt(KEY_CLICK_COUNT, 10);
     }
+
+    public static void setViewAreaAlpha(int value) {
+        SharedPreferences.Editor edit = SP.edit();
+        edit.putInt(KEY_VIEW_AREA_ALPHA, value);
+        edit.apply();
+    }
+
+    public static int getViewAreaAlpha() {
+        return SP.getInt(KEY_VIEW_AREA_ALPHA, 0x80);
+    }
+
+    public static void setViewAreaRed(int value) {
+        SharedPreferences.Editor edit = SP.edit();
+        edit.putInt(KEY_VIEW_AREA_RED, value);
+        edit.apply();
+    }
+
+    public static int getViewAreaRed() {
+        return SP.getInt(KEY_VIEW_AREA_RED, 0xFF);
+    }
+
+    public static void setViewAreaGreen(int value) {
+        SharedPreferences.Editor edit = SP.edit();
+        edit.putInt(KEY_VIEW_AREA_GREEN, value);
+        edit.apply();
+    }
+
+    public static int getViewAreaGreen() {
+        return SP.getInt(KEY_VIEW_AREA_GREEN, 0x0);
+    }
+
+    public static void setViewAreaBlue(int value) {
+        SharedPreferences.Editor edit = SP.edit();
+        edit.putInt(KEY_VIEW_AREA_BLUE, value);
+        edit.apply();
+    }
+
+    public static int getViewAreaBlue() {
+        return SP.getInt(KEY_VIEW_AREA_BLUE, 0x0);
+    }
+
+    public static void setViewAreaType(int value) {
+        SharedPreferences.Editor edit = SP.edit();
+        edit.putInt(KEY_VIEW_AREA_TYPE, value);
+        edit.apply();
+    }
+
+    public static int getViewAreaType() {
+        return SP.getInt(KEY_VIEW_AREA_TYPE, ViewAreaType.IMPORTANT);
+    }
+
 }

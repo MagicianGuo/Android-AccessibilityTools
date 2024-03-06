@@ -4,15 +4,23 @@
     <string name="accessibility_disabled">辅助功能未开启！\n请点击下方按钮开启！</string>
     <string name="go_accessibility_page">前往辅助功能页</string>
     <string name="go_app_detail_page">前往应用详情页</string>
+    <string name="view_explorer">View查看器</string>
+    <string name="view_explorer_tools_off">View查看工具：关</string>
+    <string name="view_explorer_tools_on">View查看工具：开</string>
     <string name="turn_page_tools_off">翻页工具：关</string>
     <string name="turn_page_tools_on">翻页工具：开</string>
     <string name="click_tools">连点器</string>
     <string name="click_tools_off">连点器：关</string>
     <string name="click_tools_on">连点器：开</string>
     <string name="palette">画板</string>
+    <string name="setting">设置</string>
     <string name="accessibility_service_label">@string/app_name</string>
     <string name="accessibility_service_desc">开启之后可以使用各种辅助功能。</string>
     <string name="toast_please_select_my_app">请选择“辅助功能工具”！</string>
+
+    <string name="btn_txt_show_view_area">显示View区域</string>
+    <string name="btn_txt_hide_view_area">隐藏View区域</string>
+    <string name="toast_view_explorer_unsupported">Android7.0以下不支持View区域查看功能！</string>
 
     <string name="btn_txt_make_alert_small">缩小\n弹窗</string>
     <string name="btn_txt_make_alert_large">放大\n弹窗</string>
@@ -38,4 +46,14 @@
     <string name="toast_click_params_saved">保存成功！</string>
 
     <string name="palette_desc">这是一个画板\n当前绝对坐标：(%.2f, %.2f)\n已点击次数：%d</string>
+
+    <string name="settings_view_area_color">View区域颜色</string>
+    <string name="settings_red">红：%03d(#%s)</string>
+    <string name="settings_green">绿：%03d(#%s)</string>
+    <string name="settings_blue">蓝：%03d(#%s)</string>
+    <string name="settings_alpha">透明：%03d(#%s)</string>
+    <string name="settings_view_area_type">View区域类型</string>
+    <string name="settings_view_area_type_all">全部</string>
+    <string name="settings_view_area_type_important">important</string>
+    <string name="settings_view_area_type_contain_text">含文字的</string>
 </resources>

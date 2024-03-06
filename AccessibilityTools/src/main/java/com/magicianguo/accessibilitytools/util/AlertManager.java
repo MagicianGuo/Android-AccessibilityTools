@@ -3,19 +3,39 @@ package com.magicianguo.accessibilitytools.util;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.PixelFormat;
+import android.graphics.Rect;
 import android.os.Build;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.FrameLayout;
+
+import androidx.annotation.RequiresApi;
 
 import com.magicianguo.accessibilitytools.App;
+import com.magicianguo.accessibilitytools.constant.ViewAreaType;
+import com.magicianguo.accessibilitytools.service.MyAccessibilityService;
 import com.magicianguo.accessibilitytools.view.ClickToolsView;
 import com.magicianguo.accessibilitytools.view.TurnPageView;
+import com.magicianguo.accessibilitytools.view.ViewAreaItemView;
+import com.magicianguo.accessibilitytools.view.ViewExplorerView;
 
 @SuppressLint("ClickableViewAccessibility,StaticFieldLeak")
 public class AlertManager {
+    private static final String TAG = "AlertManager";
+    private static boolean mIsPortrait = true;
     private static final WindowManager WINDOW_MANAGER = (WindowManager) App.get().getSystemService(Context.WINDOW_SERVICE);
+    public static boolean isViewExplorerViewShowing = false;
+    private static final ViewExplorerView VIEW_EXPLORER_VIEW = new ViewExplorerView(App.get());
+    private static final WindowManager.LayoutParams VIEW_EXPLORER_VIEW_PARAMS = newAlertParams();
+    private static boolean isViewAreaViewShowing = false;
+    public static int viewAreaType = SPUtils.getViewAreaType();
+    private static final FrameLayout VIEW_AREA_VIEW = new FrameLayout(App.get());
+    private static final WindowManager.LayoutParams VIEW_AREA_VIEW_PARAMS = newAlertParams(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
     public static boolean isTurnPageViewShowing = false;
     private static final TurnPageView TURN_PAGE_VIEW = new TurnPageView(App.get());
     private static final WindowManager.LayoutParams TURN_PAGE_VIEW_PARAMS = newAlertParams();
@@ -38,10 +58,11 @@ public class AlertManager {
                     mDownX = event.getX();
                     mDownY = event.getY();
                     targetParams = requireParams(v);
+                    mIsPortrait = ScreenUtils.isPortrait();
                     break;
                 case MotionEvent.ACTION_MOVE:
                     float x, y;
-                    if (ScreenUtils.isPortrait()) {
+                    if (mIsPortrait) {
                         x = event.getRawX() - mDownX;
                         y = event.getRawY() - mDownY - STATUS_BAR_HEIGHT;
                     } else {
@@ -59,7 +80,9 @@ public class AlertManager {
         }
 
         private WindowManager.LayoutParams requireParams(View v) {
-            if (v.equals(TURN_PAGE_VIEW)) {
+            if (v.equals(VIEW_EXPLORER_VIEW)) {
+                return VIEW_EXPLORER_VIEW_PARAMS;
+            } else if (v.equals(TURN_PAGE_VIEW)) {
                 return TURN_PAGE_VIEW_PARAMS;
             } else if (v.equals(CLICK_TOOLS_VIEW)) {
                 return CLICK_TOOLS_VIEW_PARAMS;
@@ -69,8 +92,84 @@ public class AlertManager {
     };
 
     static {
+        VIEW_EXPLORER_VIEW.setOnTouchListener(ON_TOUCH_LISTENER);
         TURN_PAGE_VIEW.setOnTouchListener(ON_TOUCH_LISTENER);
         CLICK_TOOLS_VIEW.setOnTouchListener(ON_TOUCH_LISTENER);
+        VIEW_AREA_VIEW_PARAMS.flags |= WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+    }
+
+    public static void showViewExplorerView() {
+        if (isViewExplorerViewShowing) {
+            return;
+        }
+        WINDOW_MANAGER.addView(VIEW_EXPLORER_VIEW, VIEW_EXPLORER_VIEW_PARAMS);
+        isViewExplorerViewShowing = true;
+    }
+
+    public static void hideViewExplorerView() {
+        if (!isViewExplorerViewShowing) {
+            return;
+        }
+        WINDOW_MANAGER.removeView(VIEW_EXPLORER_VIEW);
+        isViewExplorerViewShowing = false;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static void showViewArea(MyAccessibilityService service) {
+        if (isViewAreaViewShowing) {
+            hideViewArea();
+        }
+        AccessibilityNodeInfo rootInActiveWindow = service.getRootInActiveWindow();
+        VIEW_AREA_VIEW.removeAllViews();
+        mIsPortrait = ScreenUtils.isPortrait();
+        recursionShowViewArea(rootInActiveWindow, "1");
+        WINDOW_MANAGER.addView(VIEW_AREA_VIEW, VIEW_AREA_VIEW_PARAMS);
+        isViewAreaViewShowing = true;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private static void recursionShowViewArea(AccessibilityNodeInfo nodeInfo, String depthLevel) {
+        Log.d(TAG, "recursionShowViewArea: nodeInfo = " + nodeInfo + " , depthLevel = " + depthLevel + " ");
+        boolean shouldAdd;
+        switch (viewAreaType) {
+            case ViewAreaType.ALL:
+                shouldAdd = true;
+                break;
+            case ViewAreaType.IMPORTANT:
+                shouldAdd = nodeInfo.isImportantForAccessibility();
+                break;
+            case ViewAreaType.CONTAIN_TEXT:
+                shouldAdd = !TextUtils.isEmpty(nodeInfo.getText());
+                break;
+            default:
+                throw new RuntimeException("Unsupported type: " + viewAreaType);
+        }
+        if (shouldAdd) {
+            Rect rect = new Rect();
+            nodeInfo.getBoundsInScreen(rect);
+            ViewAreaItemView view = new ViewAreaItemView(App.get());
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(rect.right - rect.left, rect.bottom - rect.top);
+            if (mIsPortrait) {
+                params.leftMargin = rect.left;
+                params.topMargin = rect.top - STATUS_BAR_HEIGHT;
+            } else {
+                params.leftMargin = rect.left - STATUS_BAR_HEIGHT;
+                params.topMargin = rect.top;
+            }
+            VIEW_AREA_VIEW.addView(view, params);
+        }
+        int childCount = nodeInfo.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            recursionShowViewArea(nodeInfo.getChild(i), depthLevel + "." + i);
+        }
+    }
+
+    public static void hideViewArea() {
+        if (isViewAreaViewShowing) {
+            VIEW_AREA_VIEW.removeAllViews();
+            WINDOW_MANAGER.removeView(VIEW_AREA_VIEW);
+        }
+        isViewAreaViewShowing = false;
     }
 
     public static void showTurnPageView() {

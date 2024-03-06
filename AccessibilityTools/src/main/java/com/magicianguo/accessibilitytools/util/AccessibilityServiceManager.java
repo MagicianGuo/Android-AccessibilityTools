@@ -19,6 +19,22 @@ public class AccessibilityServiceManager {
         mService = service;
     }
 
+    public static void showViewArea() {
+        MyAccessibilityService service = mService;
+        if (service == null) {
+            return;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            AlertManager.showViewArea(service);
+        } else {
+            ToastUtils.longCall(R.string.toast_view_explorer_unsupported);
+        }
+    }
+
+    public static void hideViewArea() {
+        AlertManager.hideViewArea();
+    }
+
     public static void turnPage(@TurnPageType.Type int type) {
         MyAccessibilityService service = mService;
         if (service == null) {

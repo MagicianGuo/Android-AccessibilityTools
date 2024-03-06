@@ -28,6 +28,12 @@
         android:text="@string/go_app_detail_page" />
 
     <Button
+        android:id="@+id/btn_view_explorer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_explorer_tools_off" />
+
+    <Button
         android:id="@+id/btn_turn_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,4 +50,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/palette" />
+
+    <Button
+        android:id="@+id/btn_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/setting" />
 </LinearLayout>

@@ -26,4 +26,15 @@
         <item name="android:textSize">8dp</item>
         <item name="android:digits">0123456789</item>
     </style>
+    <style name="SettingItem" parent="WrapContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+    </style>
+    <style name="SettingTitle" parent="WrapContent">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:maxWidth">200dp</item>
+    </style>
 </resources>

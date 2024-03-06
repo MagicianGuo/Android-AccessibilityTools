@@ -30,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
         updateAccessibilityState();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
     private void initView() {
         binding.btnGoAccessibility.setOnClickListener(v -> {
             PermissionUtils.goAccessibilityPage(this);
@@ -37,6 +43,18 @@ public class MainActivity extends AppCompatActivity {
         });
         binding.btnGoAppDetail.setOnClickListener(v -> {
             PermissionUtils.goAppDetailPage(this);
+        });
+        updateBtnViewExplorerState(AlertManager.isViewExplorerViewShowing);
+        binding.btnViewExplorer.setOnClickListener(v -> {
+            if (checkAlertPermission()) {
+                boolean selected = v.isSelected();
+                if (selected) {
+                    AlertManager.hideViewExplorerView();
+                } else {
+                    AlertManager.showViewExplorerView();
+                }
+                updateBtnViewExplorerState(!selected);
+            }
         });
         updateBtnTurnPageState(AlertManager.isTurnPageViewShowing);
         binding.btnTurnPage.setOnClickListener(v -> {
@@ -66,6 +84,20 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, PaletteActivity.class);
             startActivity(intent);
         });
+        binding.btnSetting.setOnClickListener(v -> {
+            Intent intent = new Intent(this, SettingActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void updateBtnViewExplorerState(boolean showing) {
+        if (showing) {
+            binding.btnViewExplorer.setSelected(true);
+            binding.btnViewExplorer.setText(R.string.view_explorer_tools_on);
+        } else {
+            binding.btnViewExplorer.setSelected(false);
+            binding.btnViewExplorer.setText(R.string.view_explorer_tools_off);
+        }
     }
 
     private void updateBtnTurnPageState(boolean showing) {
@@ -91,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
     private void updateAccessibilityState() {
         boolean enabled = PermissionUtils.isAccessibilityEnabled();
         binding.tvAccessibilityState.setText(enabled ? R.string.accessibility_enabled : R.string.accessibility_disabled);
+        binding.btnViewExplorer.setEnabled(enabled);
         binding.btnTurnPage.setEnabled(enabled);
         binding.btnClickTools.setEnabled(enabled);
     }

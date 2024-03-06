@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/SettingItem"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <TextView
+                android:id="@+id/tv_view_area_color"
+                style="@style/SettingTitle"
+                android:layout_marginTop="20dp"
+                android:text="@string/settings_view_area_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_view_area_color"
+                android:layout_width="60dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/bg_black_stroke_1px"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_view_area_color"
+                app:layout_constraintStart_toEndOf="@+id/tv_view_area_color"
+                app:layout_constraintTop_toTopOf="@+id/tv_view_area_color" />
+
+            <TextView
+                android:id="@+id/tv_red"
+                style="@style/SettingTitle"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_view_area_color"
+                tools:text="红：255(#FF)" />
+
+            <SeekBar
+                android:id="@+id/sb_red"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:max="255"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_red" />
+
+            <TextView
+                android:id="@+id/tv_green"
+                style="@style/SettingTitle"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_red"
+                tools:text="绿：255(#FF)" />
+
+            <SeekBar
+                android:id="@+id/sb_green"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:max="255"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_green" />
+
+            <TextView
+                android:id="@+id/tv_blue"
+                style="@style/SettingTitle"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_green"
+                tools:text="蓝：255(#FF)" />
+
+            <SeekBar
+                android:id="@+id/sb_blue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:max="255"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_blue" />
+
+            <TextView
+                android:id="@+id/tv_alpha"
+                style="@style/SettingTitle"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_blue"
+                tools:text="透明：255(#FF)" />
+
+            <SeekBar
+                android:id="@+id/sb_alpha"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:max="255"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_alpha"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_alpha" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            style="@style/SettingItem">
+            <TextView
+                android:id="@+id/tv_view_area_type"
+                style="@style/SettingTitle"
+                android:layout_centerVertical="true"
+                android:text="@string/settings_view_area_type" />
+            <RadioGroup
+                android:id="@+id/rg_view_area_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true">
+                <RadioButton
+                    android:id="@+id/rb_view_area_type_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_view_area_type_all" />
+                <RadioButton
+                    android:id="@+id/rb_view_area_type_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_view_area_type_important" />
+                <RadioButton
+                    android:id="@+id/rb_view_area_type_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_view_area_type_contain_text" />
+            </RadioGroup>
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
