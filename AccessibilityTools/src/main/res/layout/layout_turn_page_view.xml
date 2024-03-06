@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <TextView
+        android:id="@+id/tv_time"
+        style="@style/TxtTitle"
+        android:text="00:00" />
+
+    <TextView
+        android:id="@+id/btn_change_size"
+        style="@style/AlertButton"
+        android:layout_marginTop="15dp"
+        android:text="@string/btn_txt_make_alert_small" />
+
+    <RelativeLayout
+        android:id="@+id/rl_operation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/btn_left"
+            style="@style/AlertButton"
+            android:text="@string/btn_txt_turn_left_page" />
+
+        <TextView
+            android:id="@+id/btn_up"
+            style="@style/AlertButton"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/btn_left"
+            android:text="@string/btn_txt_turn_up_page" />
+
+        <TextView
+            android:id="@+id/btn_right"
+            style="@style/AlertButton"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/btn_up"
+            android:text="@string/btn_txt_turn_right_page" />
+
+        <TextView
+            android:id="@+id/btn_up_video"
+            style="@style/AlertButton"
+            android:layout_width="65dp"
+            android:layout_below="@+id/btn_left"
+            android:layout_marginTop="5dp"
+            android:text="@string/btn_txt_turn_up_page_video" />
+
+        <TextView
+            android:id="@+id/btn_turn_stop"
+            style="@style/AlertButton"
+            android:layout_below="@+id/btn_left"
+            android:layout_toEndOf="@id/btn_up_video"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/btn_txt_turn_page_stop" />
+    </RelativeLayout>
+</merge>

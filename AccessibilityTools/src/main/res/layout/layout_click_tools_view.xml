@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/TxtTitle"
+        android:text="@string/click_tools"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/btn_change_size"
+        style="@style/AlertButton"
+        android:text="@string/btn_txt_make_alert_small"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+        app:layout_constraintStart_toEndOf="@+id/tv_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_title" />
+
+    <TextView
+        android:id="@+id/tv_set_x"
+        style="@style/TxtSubTitle"
+        android:layout_marginTop="18dp"
+        android:text="@string/title_set_click_x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+    <EditText
+        android:id="@+id/et_set_x"
+        style="@style/AlertEditText"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_set_x"
+        app:layout_constraintStart_toEndOf="@+id/tv_set_x"
+        app:layout_constraintTop_toTopOf="@+id/tv_set_x"
+        tools:text="1999" />
+
+    <TextView
+        android:id="@+id/tv_set_y"
+        style="@style/TxtSubTitle"
+        android:layout_marginTop="18dp"
+        android:text="@string/title_set_click_y"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_set_x" />
+
+    <EditText
+        android:id="@+id/et_set_y"
+        style="@style/AlertEditText"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_set_y"
+        app:layout_constraintStart_toEndOf="@+id/tv_set_y"
+        app:layout_constraintTop_toTopOf="@+id/tv_set_y"
+        tools:text="888" />
+
+    <TextView
+        android:id="@+id/tv_set_interval"
+        style="@style/TxtSubTitle"
+        android:layout_marginTop="18dp"
+        android:text="@string/title_set_click_interval"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_set_y" />
+
+    <EditText
+        android:id="@+id/et_set_interval"
+        style="@style/AlertEditText"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_set_interval"
+        app:layout_constraintStart_toEndOf="@+id/tv_set_interval"
+        app:layout_constraintTop_toTopOf="@+id/tv_set_interval"
+        tools:text="888" />
+
+    <TextView
+        android:id="@+id/tv_set_count"
+        style="@style/TxtSubTitle"
+        android:layout_marginTop="18dp"
+        android:text="@string/title_set_click_count"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_set_interval" />
+
+    <EditText
+        android:id="@+id/et_set_count"
+        style="@style/AlertEditText"
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_set_count"
+        app:layout_constraintStart_toEndOf="@+id/tv_set_count"
+        app:layout_constraintTop_toTopOf="@+id/tv_set_count"
+        tools:text="888" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_config"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:constraint_referenced_ids="tv_set_x,tv_set_y,tv_set_interval,tv_set_count,et_set_x,et_set_y,et_set_interval,et_set_count,btn_operation"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/btn_operation"
+        style="@style/AlertButton"
+        android:layout_width="55dp"
+        android:text="@string/btn_txt_start_edit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_set_count"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:id="@+id/btn_start_click"
+        style="@style/AlertButton"
+        android:layout_width="55dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/btn_txt_start_click"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_operation" />
+
+    <TextView
+        android:id="@+id/btn_stop_click"
+        style="@style/AlertButton"
+        android:layout_width="55dp"
+        android:layout_marginStart="5dp"
+        android:text="@string/btn_txt_stop_click"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start_click"
+        app:layout_constraintStart_toEndOf="@+id/btn_start_click" />
+</merge>
