@@ -107,7 +107,7 @@ public class AlertManager {
 
     public static void setClickToolsViewInputEnabled(boolean enable) {
         if (enable) {
-            CLICK_TOOLS_VIEW_PARAMS.flags = 0;
+            CLICK_TOOLS_VIEW_PARAMS.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
         } else {
             CLICK_TOOLS_VIEW_PARAMS.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         }

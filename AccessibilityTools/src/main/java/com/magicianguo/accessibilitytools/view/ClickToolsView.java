@@ -113,6 +113,14 @@ public class ClickToolsView extends ConstraintLayout {
         });
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            clearFocus();
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
     private boolean saveConfig() {
         int x = getDecodeNum(mEtClickX.getText().toString());
         if (x < 0) {
