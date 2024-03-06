@@ -1,8 +1,10 @@
 package com.magicianguo.accessibilitytools.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -41,6 +43,7 @@ public class ClickToolsView extends ConstraintLayout {
     private EditText mEtClickInterval;
     private EditText mEtClickCount;
 
+    @SuppressLint("ClickableViewAccessibility")
     private void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.layout_click_tools_view, this);
         setBackgroundResource(R.drawable.bg_alert_common);
@@ -96,8 +99,17 @@ public class ClickToolsView extends ConstraintLayout {
                     SPUtils.getClickX(), SPUtils.getClickY(), SPUtils.getClickInterval(), SPUtils.getClickCount()
             );
         });
-        findViewById(R.id.btn_stop_click).setOnClickListener(v -> {
-            AccessibilityServiceManager.abortThreadTask();
+        findViewById(R.id.btn_stop_click).setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    v.setPressed(true);
+                    AccessibilityServiceManager.abortThreadTask();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    AccessibilityServiceManager.abortThreadTask();
+                    v.setPressed(false);
+            }
+            return true;
         });
     }
 
