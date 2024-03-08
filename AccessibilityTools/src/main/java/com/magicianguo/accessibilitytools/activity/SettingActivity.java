@@ -2,7 +2,6 @@ package com.magicianguo.accessibilitytools.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -12,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.magicianguo.accessibilitytools.R;
+import com.magicianguo.accessibilitytools.constant.OptionValue;
 import com.magicianguo.accessibilitytools.constant.ViewAreaType;
 import com.magicianguo.accessibilitytools.databinding.ActivitySettingBinding;
 import com.magicianguo.accessibilitytools.util.AlertManager;
@@ -126,6 +126,7 @@ public class SettingActivity extends AppCompatActivity {
         binding.swViewAreaTranslateTop.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                AlertManager.isViewAreaTranslateTop = isChecked;
                 SPUtils.setViewAreaTranslateTop(isChecked);
             }
         });
@@ -133,6 +134,7 @@ public class SettingActivity extends AppCompatActivity {
         binding.swViewAreaTranslateLeft.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                AlertManager.isViewAreaTranslateLeft = isChecked;
                 SPUtils.setViewAreaTranslateLeft(isChecked);
             }
         });
@@ -183,6 +185,51 @@ public class SettingActivity extends AppCompatActivity {
                 }
             }
         });
+        binding.btnRestoreDefaultSettings.setOnClickListener(v -> restoreDefaultSettings());
+    }
+
+    private void restoreDefaultSettings() {
+        ViewAreaItemView.red = OptionValue.DEFAULT_RED;
+        SPUtils.setViewAreaRed(OptionValue.DEFAULT_RED);
+        ViewAreaItemView.green = OptionValue.DEFAULT_GREEN;
+        SPUtils.setViewAreaGreen(OptionValue.DEFAULT_GREEN);
+        ViewAreaItemView.blue = OptionValue.DEFAULT_BLUE;
+        SPUtils.setViewAreaBlue(OptionValue.DEFAULT_BLUE);
+        ViewAreaItemView.alpha = OptionValue.DEFAULT_ALPHA;
+        SPUtils.setViewAreaAlpha(OptionValue.DEFAULT_ALPHA);
+        updateViewAreaColorState();
+        updateViewAreaRedState(false);
+        updateViewAreaGreenState(false);
+        updateViewAreaBlueState(false);
+        updateViewAreaAlphaState(false);
+
+        AlertManager.viewAreaType = OptionValue.DEFAULT_VIEW_AREA_TYPE;
+        SPUtils.setViewAreaType(OptionValue.DEFAULT_VIEW_AREA_TYPE);
+        binding.rgViewAreaType.check(getCheckedViewAreaTypeId());
+
+        AlertManager.isViewAreaTranslateTop = OptionValue.DEFAULT_VIEW_AREA_TRANSLATE_TOP;
+        binding.swViewAreaTranslateTop.setChecked(OptionValue.DEFAULT_VIEW_AREA_TRANSLATE_TOP);
+        SPUtils.setViewAreaTranslateTop(OptionValue.DEFAULT_VIEW_AREA_TRANSLATE_TOP);
+
+        AlertManager.isViewAreaTranslateLeft = OptionValue.DEFAULT_VIEW_AREA_TRANSLATE_LEFT;
+        binding.swViewAreaTranslateLeft.setChecked(OptionValue.DEFAULT_VIEW_AREA_TRANSLATE_LEFT);
+        SPUtils.setViewAreaTranslateLeft(OptionValue.DEFAULT_VIEW_AREA_TRANSLATE_LEFT);
+
+        ViewAreaItemView.textSize = OptionValue.DEFAULT_VIEW_AREA_TXT_SIZE;
+        SPUtils.setViewAreaTxtSize(OptionValue.DEFAULT_VIEW_AREA_TXT_SIZE);
+        binding.sbViewAreaTxtSize.setProgress(OptionValue.DEFAULT_VIEW_AREA_TXT_SIZE);
+
+        AlertManager.viewAreaTxtShowPkg = OptionValue.DEFAULT_VIEW_AREA_TXT_SHOW_PKG;
+        SPUtils.setViewAreaTxtShowPkg(OptionValue.DEFAULT_VIEW_AREA_TXT_SHOW_PKG);
+        binding.swViewAreaTxtShowPkg.setChecked(OptionValue.DEFAULT_VIEW_AREA_TXT_SHOW_PKG);
+
+        AlertManager.viewAreaTxtSingleLine = OptionValue.DEFAULT_VIEW_AREA_TXT_SINGLE_LINE;
+        SPUtils.setViewAreaTxtSingleLine(OptionValue.DEFAULT_VIEW_AREA_TXT_SINGLE_LINE);
+        binding.swViewAreaTxtSingleLine.setChecked(OptionValue.DEFAULT_VIEW_AREA_TXT_SINGLE_LINE);
+
+        AlertManager.viewAreaWriteToLog = OptionValue.DEFAULT_VIEW_AREA_WRITE_TO_LOG;
+        SPUtils.setViewAreaWriteToLog(OptionValue.DEFAULT_VIEW_AREA_WRITE_TO_LOG);
+        binding.swViewAreaWriteLog.setChecked(OptionValue.DEFAULT_VIEW_AREA_WRITE_TO_LOG);
     }
 
     private void updateViewAreaTxtSizeState(boolean fromUser) {

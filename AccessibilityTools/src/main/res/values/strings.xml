@@ -67,4 +67,5 @@
     <string name="settings_view_area_text_single_line">View区域文字单行显示</string>
     <string name="settings_view_area_write_log_to_file_when_show">显示View区域时输出日志到文件</string>
     <string name="settings_toast_view_area_write_log_to_xxx_path">日志会输出到%s</string>
+    <string name="settings_restore_default_settings">恢复默认设置</string>
 </resources>

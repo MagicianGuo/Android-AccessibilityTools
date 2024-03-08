@@ -30,8 +30,8 @@ import java.util.Date;
 @SuppressLint("ClickableViewAccessibility,StaticFieldLeak")
 public class AlertManager {
     private static final String TAG = "AlertManager";
-    public static boolean isViewAreaTranslateTop = true;
-    public static boolean isViewAreaTranslateLeft = false;
+    public static boolean isViewAreaTranslateTop = SPUtils.getViewAreaTranslateTop();
+    public static boolean isViewAreaTranslateLeft = SPUtils.getViewAreaTranslateLeft();
     private static int viewAreaTranslateTop = 0;
     private static int viewAreaTranslateLeft = 0;
     private static final WindowManager WINDOW_MANAGER = (WindowManager) App.get().getSystemService(Context.WINDOW_SERVICE);

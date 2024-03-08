@@ -224,5 +224,20 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true" />
         </RelativeLayout>
+        <RelativeLayout
+            style="@style/SettingItem">
+            <TextView
+                android:id="@+id/tv_restore_default_settings"
+                style="@style/SettingTitle"
+                android:layout_centerVertical="true"
+                android:text="@string/settings_restore_default_settings" />
+            <Button
+                android:id="@+id/btn_restore_default_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_restore_default_settings"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

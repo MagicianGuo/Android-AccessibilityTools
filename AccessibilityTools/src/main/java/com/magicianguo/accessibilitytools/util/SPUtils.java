@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.magicianguo.accessibilitytools.App;
+import com.magicianguo.accessibilitytools.constant.OptionValue;
 import com.magicianguo.accessibilitytools.constant.ViewAreaType;
 
 public class SPUtils {
@@ -73,7 +74,7 @@ public class SPUtils {
     }
 
     public static int getViewAreaAlpha() {
-        return SP.getInt(KEY_VIEW_AREA_ALPHA, 0x80);
+        return SP.getInt(KEY_VIEW_AREA_ALPHA, OptionValue.DEFAULT_ALPHA);
     }
 
     public static void setViewAreaRed(int value) {
@@ -83,7 +84,7 @@ public class SPUtils {
     }
 
     public static int getViewAreaRed() {
-        return SP.getInt(KEY_VIEW_AREA_RED, 0xFF);
+        return SP.getInt(KEY_VIEW_AREA_RED, OptionValue.DEFAULT_RED);
     }
 
     public static void setViewAreaGreen(int value) {
@@ -93,7 +94,7 @@ public class SPUtils {
     }
 
     public static int getViewAreaGreen() {
-        return SP.getInt(KEY_VIEW_AREA_GREEN, 0x0);
+        return SP.getInt(KEY_VIEW_AREA_GREEN, OptionValue.DEFAULT_GREEN);
     }
 
     public static void setViewAreaBlue(int value) {
@@ -103,7 +104,7 @@ public class SPUtils {
     }
 
     public static int getViewAreaBlue() {
-        return SP.getInt(KEY_VIEW_AREA_BLUE, 0x0);
+        return SP.getInt(KEY_VIEW_AREA_BLUE, OptionValue.DEFAULT_BLUE);
     }
 
     public static void setViewAreaType(int value) {
@@ -113,7 +114,7 @@ public class SPUtils {
     }
 
     public static int getViewAreaType() {
-        return SP.getInt(KEY_VIEW_AREA_TYPE, ViewAreaType.IMPORTANT);
+        return SP.getInt(KEY_VIEW_AREA_TYPE, OptionValue.DEFAULT_VIEW_AREA_TYPE);
     }
 
     public static void setViewAreaTxtSize(int value) {
@@ -123,7 +124,7 @@ public class SPUtils {
     }
 
     public static int getViewAreaTxtSize() {
-        return SP.getInt(KEY_VIEW_AREA_TXT_SIZE, 20);
+        return SP.getInt(KEY_VIEW_AREA_TXT_SIZE, OptionValue.DEFAULT_VIEW_AREA_TXT_SIZE);
     }
 
     public static void setViewAreaTxtShowPkg(boolean show) {
@@ -133,7 +134,7 @@ public class SPUtils {
     }
 
     public static boolean getViewAreaTxtShowPkg() {
-        return SP.getBoolean(KEY_VIEW_AREA_TXT_SHOW_PKG, false);
+        return SP.getBoolean(KEY_VIEW_AREA_TXT_SHOW_PKG, OptionValue.DEFAULT_VIEW_AREA_TXT_SHOW_PKG);
     }
 
     public static void setViewAreaTxtSingleLine(boolean show) {
@@ -143,7 +144,7 @@ public class SPUtils {
     }
 
     public static boolean getViewAreaTxtSingleLine() {
-        return SP.getBoolean(KEY_VIEW_AREA_TXT_SINGLE_LINE, false);
+        return SP.getBoolean(KEY_VIEW_AREA_TXT_SINGLE_LINE, OptionValue.DEFAULT_VIEW_AREA_TXT_SINGLE_LINE);
     }
 
     public static void setViewAreaWriteToLog(boolean show) {
@@ -153,7 +154,7 @@ public class SPUtils {
     }
 
     public static boolean getViewAreaWriteToLog() {
-        return SP.getBoolean(KEY_VIEW_AREA_WRITE_TO_LOG, false);
+        return SP.getBoolean(KEY_VIEW_AREA_WRITE_TO_LOG, OptionValue.DEFAULT_VIEW_AREA_WRITE_TO_LOG);
     }
 
     public static void setViewAreaTranslateTop(boolean b) {
@@ -163,7 +164,7 @@ public class SPUtils {
     }
 
     public static boolean getViewAreaTranslateTop() {
-        return SP.getBoolean(KEY_VIEW_AREA_TRANSLATE_TOP, true);
+        return SP.getBoolean(KEY_VIEW_AREA_TRANSLATE_TOP, OptionValue.DEFAULT_VIEW_AREA_TRANSLATE_TOP);
     }
 
     public static void setViewAreaTranslateLeft(boolean b) {
@@ -173,7 +174,7 @@ public class SPUtils {
     }
 
     public static boolean getViewAreaTranslateLeft() {
-        return SP.getBoolean(KEY_VIEW_AREA_TRANSLATE_LEFT, false);
+        return SP.getBoolean(KEY_VIEW_AREA_TRANSLATE_LEFT, OptionValue.DEFAULT_VIEW_AREA_TRANSLATE_LEFT);
     }
 
 }
