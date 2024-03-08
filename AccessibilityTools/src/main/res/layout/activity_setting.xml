@@ -142,6 +142,34 @@
         <RelativeLayout
             style="@style/SettingItem">
             <TextView
+                android:id="@+id/tv_view_area_translate_top"
+                style="@style/SettingTitle"
+                android:layout_centerVertical="true"
+                android:text="@string/settings_view_area_translate_top" />
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/sw_view_area_translate_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            style="@style/SettingItem">
+            <TextView
+                android:id="@+id/tv_view_area_translate_left"
+                style="@style/SettingTitle"
+                android:layout_centerVertical="true"
+                android:text="@string/settings_view_area_translate_left" />
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/sw_view_area_translate_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            style="@style/SettingItem">
+            <TextView
                 android:id="@+id/tv_view_area_txt_size"
                 style="@style/SettingTitle"
                 android:layout_centerVertical="true"

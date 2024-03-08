@@ -122,6 +122,20 @@ public class SettingActivity extends AppCompatActivity {
                 SPUtils.setViewAreaType(type);
             }
         });
+        binding.swViewAreaTranslateTop.setChecked(AlertManager.isViewAreaTranslateTop);
+        binding.swViewAreaTranslateTop.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SPUtils.setViewAreaTranslateTop(isChecked);
+            }
+        });
+        binding.swViewAreaTranslateLeft.setChecked(AlertManager.isViewAreaTranslateLeft);
+        binding.swViewAreaTranslateLeft.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SPUtils.setViewAreaTranslateLeft(isChecked);
+            }
+        });
         updateViewAreaTxtSizeState(false);
         binding.sbViewAreaTxtSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

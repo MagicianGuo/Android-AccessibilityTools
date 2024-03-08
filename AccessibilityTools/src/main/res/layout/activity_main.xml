@@ -1,59 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_accessibility_state"
-        android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20dp"
-        tools:text="辅助功能未开启！" />
+        android:layout_gravity="center">
 
-    <Button
-        android:id="@+id/btn_go_accessibility"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/go_accessibility_page" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_go_app_detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/go_app_detail_page" />
+            <TextView
+                android:id="@+id/tv_accessibility_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20dp"
+                tools:text="辅助功能未开启！" />
 
-    <Button
-        android:id="@+id/btn_view_explorer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/view_explorer_tools_off" />
+            <Button
+                android:id="@+id/btn_go_accessibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/go_accessibility_page" />
 
-    <Button
-        android:id="@+id/btn_turn_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/turn_page_tools_off" />
+            <Button
+                android:id="@+id/btn_go_app_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/go_app_detail_page" />
 
-    <Button
-        android:id="@+id/btn_click_tools"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/click_tools_off" />
+            <Button
+                android:id="@+id/btn_view_explorer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_explorer_tools_off" />
 
-    <Button
-        android:id="@+id/btn_palette"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/palette" />
+            <Button
+                android:id="@+id/btn_turn_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/turn_page_tools_off" />
 
-    <Button
-        android:id="@+id/btn_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/setting" />
-</LinearLayout>
+            <Button
+                android:id="@+id/btn_click_tools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/click_tools_off" />
+
+            <Button
+                android:id="@+id/btn_palette"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/palette" />
+
+            <Button
+                android:id="@+id/btn_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setting" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

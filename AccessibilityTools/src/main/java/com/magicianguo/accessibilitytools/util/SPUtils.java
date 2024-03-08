@@ -23,6 +23,8 @@ public class SPUtils {
     public static final String KEY_VIEW_AREA_TXT_SHOW_PKG = "KEY_VIEW_AREA_TXT_SHOW_PKG";
     public static final String KEY_VIEW_AREA_TXT_SINGLE_LINE = "KEY_VIEW_AREA_TXT_SINGLE_LINE";
     public static final String KEY_VIEW_AREA_WRITE_TO_LOG = "KEY_VIEW_AREA_WRITE_TO_LOG";
+    public static final String KEY_VIEW_AREA_TRANSLATE_TOP = "KEY_VIEW_AREA_TRANSLATE_TOP";
+    public static final String KEY_VIEW_AREA_TRANSLATE_LEFT = "KEY_VIEW_AREA_TRANSLATE_LEFT";
 
     public static void setClickX(int value) {
         SharedPreferences.Editor edit = SP.edit();
@@ -152,6 +154,26 @@ public class SPUtils {
 
     public static boolean getViewAreaWriteToLog() {
         return SP.getBoolean(KEY_VIEW_AREA_WRITE_TO_LOG, false);
+    }
+
+    public static void setViewAreaTranslateTop(boolean b) {
+        SharedPreferences.Editor edit = SP.edit();
+        edit.putBoolean(KEY_VIEW_AREA_TRANSLATE_TOP, b);
+        edit.apply();
+    }
+
+    public static boolean getViewAreaTranslateTop() {
+        return SP.getBoolean(KEY_VIEW_AREA_TRANSLATE_TOP, true);
+    }
+
+    public static void setViewAreaTranslateLeft(boolean b) {
+        SharedPreferences.Editor edit = SP.edit();
+        edit.putBoolean(KEY_VIEW_AREA_TRANSLATE_LEFT, b);
+        edit.apply();
+    }
+
+    public static boolean getViewAreaTranslateLeft() {
+        return SP.getBoolean(KEY_VIEW_AREA_TRANSLATE_LEFT, false);
     }
 
 }

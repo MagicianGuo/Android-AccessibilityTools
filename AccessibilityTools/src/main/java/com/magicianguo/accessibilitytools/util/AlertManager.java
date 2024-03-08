@@ -30,7 +30,10 @@ import java.util.Date;
 @SuppressLint("ClickableViewAccessibility,StaticFieldLeak")
 public class AlertManager {
     private static final String TAG = "AlertManager";
-    private static boolean mIsPortrait = true;
+    public static boolean isViewAreaTranslateTop = true;
+    public static boolean isViewAreaTranslateLeft = false;
+    private static int viewAreaTranslateTop = 0;
+    private static int viewAreaTranslateLeft = 0;
     private static final WindowManager WINDOW_MANAGER = (WindowManager) App.get().getSystemService(Context.WINDOW_SERVICE);
     public static boolean isViewExplorerViewShowing = false;
     private static final ViewExplorerView VIEW_EXPLORER_VIEW = new ViewExplorerView(App.get());
@@ -64,17 +67,15 @@ public class AlertManager {
                     mDownX = event.getX();
                     mDownY = event.getY();
                     targetParams = requireParams(v);
-                    mIsPortrait = ScreenUtils.isPortrait();
+                    isViewAreaTranslateTop = SPUtils.getViewAreaTranslateTop();
+                    isViewAreaTranslateLeft = SPUtils.getViewAreaTranslateLeft();
+                    viewAreaTranslateTop = isViewAreaTranslateTop ? STATUS_BAR_HEIGHT : 0;
+                    viewAreaTranslateLeft = isViewAreaTranslateLeft ? STATUS_BAR_HEIGHT : 0;
                     break;
                 case MotionEvent.ACTION_MOVE:
                     float x, y;
-                    if (mIsPortrait) {
-                        x = event.getRawX() - mDownX;
-                        y = event.getRawY() - mDownY - STATUS_BAR_HEIGHT;
-                    } else {
-                        x = event.getRawX() - mDownX - STATUS_BAR_HEIGHT;
-                        y = event.getRawY() - mDownY;
-                    }
+                    x = event.getRawX() - mDownX - viewAreaTranslateLeft;
+                    y = event.getRawY() - mDownY - viewAreaTranslateTop;
                     targetParams.x = (int) x;
                     targetParams.y = (int) y;
                     WINDOW_MANAGER.updateViewLayout(v, targetParams);
@@ -133,7 +134,10 @@ public class AlertManager {
         }
         AccessibilityNodeInfo rootInActiveWindow = service.getRootInActiveWindow();
         VIEW_AREA_VIEW.removeAllViews();
-        mIsPortrait = ScreenUtils.isPortrait();
+        isViewAreaTranslateTop = SPUtils.getViewAreaTranslateTop();
+        isViewAreaTranslateLeft = SPUtils.getViewAreaTranslateLeft();
+        viewAreaTranslateTop = isViewAreaTranslateTop ? STATUS_BAR_HEIGHT : 0;
+        viewAreaTranslateLeft = isViewAreaTranslateLeft ? STATUS_BAR_HEIGHT : 0;
         recursionShowViewArea(rootInActiveWindow, "1");
         WINDOW_MANAGER.addView(VIEW_AREA_VIEW, VIEW_AREA_VIEW_PARAMS);
         isViewAreaViewShowing = true;
@@ -167,13 +171,8 @@ public class AlertManager {
             } else {
                 params = new FrameLayout.LayoutParams(rect.right - rect.left, rect.bottom - rect.top);
             }
-            if (mIsPortrait) {
-                params.leftMargin = rect.left;
-                params.topMargin = rect.top - STATUS_BAR_HEIGHT;
-            } else {
-                params.leftMargin = rect.left - STATUS_BAR_HEIGHT;
-                params.topMargin = rect.top;
-            }
+            params.leftMargin = rect.left - viewAreaTranslateLeft;
+            params.topMargin = rect.top - viewAreaTranslateTop;
             final String txt = nodeInfo.getViewIdResourceName();
             if (viewAreaTxtShowPkg) {
                 view.setText(txt);

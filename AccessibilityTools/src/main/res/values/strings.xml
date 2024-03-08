@@ -57,6 +57,8 @@
     <string name="settings_blue">蓝：%03d(#%s)</string>
     <string name="settings_alpha">透明：%03d(#%s)</string>
     <string name="settings_view_area_type">View区域类型</string>
+    <string name="settings_view_area_translate_left">View区域绘制时左移\n(屏幕左侧有状态栏时请开启)</string>
+    <string name="settings_view_area_translate_top">View区域绘制时上移\n(屏幕上方有状态栏时请开启)</string>
     <string name="settings_view_area_type_all">全部</string>
     <string name="settings_view_area_type_important">important</string>
     <string name="settings_view_area_type_contain_text">含文字的</string>
