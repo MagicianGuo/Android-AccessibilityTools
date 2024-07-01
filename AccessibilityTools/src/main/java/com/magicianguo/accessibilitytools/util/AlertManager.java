@@ -2,6 +2,7 @@ package com.magicianguo.accessibilitytools.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.os.Build;
@@ -48,6 +49,8 @@ public class AlertManager {
     public static boolean isTurnPageViewShowing = false;
     private static final TurnPageView TURN_PAGE_VIEW = new TurnPageView(App.get());
     private static final WindowManager.LayoutParams TURN_PAGE_VIEW_PARAMS = newAlertParams();
+    private static final View TURN_PAGE_EXTRA_VIEW = new View(App.get());
+    private static final WindowManager.LayoutParams TURN_PAGE_VIEW_EXTRA_PARAMS = newAlertParams();
     public static boolean isClickToolsViewShowing = false;
     private static final ClickToolsView CLICK_TOOLS_VIEW = new ClickToolsView(App.get());
     private static final WindowManager.LayoutParams CLICK_TOOLS_VIEW_PARAMS = newAlertParams();
@@ -207,6 +210,12 @@ public class AlertManager {
             return;
         }
         WINDOW_MANAGER.addView(TURN_PAGE_VIEW, TURN_PAGE_VIEW_PARAMS);
+        // 增加底部防误触View
+        TURN_PAGE_VIEW_EXTRA_PARAMS.width = WindowManager.LayoutParams.MATCH_PARENT;
+        TURN_PAGE_VIEW_EXTRA_PARAMS.height = (int) DimenUtils.dp2px(70);
+        TURN_PAGE_VIEW_EXTRA_PARAMS.gravity = Gravity.BOTTOM;
+        TURN_PAGE_EXTRA_VIEW.setBackgroundColor(Color.argb(0x80, 0x45, 0xCB, 0xA8));
+        WINDOW_MANAGER.addView(TURN_PAGE_EXTRA_VIEW, TURN_PAGE_VIEW_EXTRA_PARAMS);
         if (alertStateListener != null) {
             alertStateListener.onTurnPage(true);
         }
@@ -218,6 +227,7 @@ public class AlertManager {
             return;
         }
         WINDOW_MANAGER.removeView(TURN_PAGE_VIEW);
+        WINDOW_MANAGER.removeView(TURN_PAGE_EXTRA_VIEW);
         if (alertStateListener != null) {
             alertStateListener.onTurnPage(false);
         }
